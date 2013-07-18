@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		187507AC179817CB00463B60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187507AB179817CB00463B60 /* UIKit.framework */; };
+		187507AE179817CB00463B60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187507AD179817CB00463B60 /* Foundation.framework */; };
+		187507B0179817CB00463B60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187507AF179817CB00463B60 /* CoreGraphics.framework */; };
+		187507B6179817CC00463B60 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 187507B4179817CC00463B60 /* InfoPlist.strings */; };
+		187507B8179817CC00463B60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 187507B7179817CC00463B60 /* main.m */; };
+		187507BC179817CC00463B60 /* PLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 187507BB179817CC00463B60 /* PLAppDelegate.m */; };
+		187507BE179817CC00463B60 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 187507BD179817CC00463B60 /* Default.png */; };
+		187507C0179817CC00463B60 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187507BF179817CC00463B60 /* Default@2x.png */; };
+		187507C2179817CC00463B60 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187507C1179817CC00463B60 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		187507A8179817CB00463B60 /* PLVisualAttributeConstraints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLVisualAttributeConstraints.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		187507AB179817CB00463B60 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		187507AD179817CB00463B60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		187507AF179817CB00463B60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		187507B3179817CB00463B60 /* PLVisualAttributeConstraints-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PLVisualAttributeConstraints-Info.plist"; sourceTree = "<group>"; };
+		187507B5179817CC00463B60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		187507B7179817CC00463B60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		187507B9179817CC00463B60 /* PLVisualAttributeConstraints-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PLVisualAttributeConstraints-Prefix.pch"; sourceTree = "<group>"; };
+		187507BA179817CC00463B60 /* PLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLAppDelegate.h; sourceTree = "<group>"; };
+		187507BB179817CC00463B60 /* PLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLAppDelegate.m; sourceTree = "<group>"; };
+		187507BD179817CC00463B60 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		187507BF179817CC00463B60 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		187507C1179817CC00463B60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		187507A5179817CB00463B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				187507AC179817CB00463B60 /* UIKit.framework in Frameworks */,
+				187507AE179817CB00463B60 /* Foundation.framework in Frameworks */,
+				187507B0179817CB00463B60 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1875079F179817CB00463B60 = {
+			isa = PBXGroup;
+			children = (
+				187507B1179817CB00463B60 /* PLVisualAttributeConstraints */,
+				187507AA179817CB00463B60 /* Frameworks */,
+				187507A9179817CB00463B60 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		187507A9179817CB00463B60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				187507A8179817CB00463B60 /* PLVisualAttributeConstraints.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		187507AA179817CB00463B60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				187507AB179817CB00463B60 /* UIKit.framework */,
+				187507AD179817CB00463B60 /* Foundation.framework */,
+				187507AF179817CB00463B60 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		187507B1179817CB00463B60 /* PLVisualAttributeConstraints */ = {
+			isa = PBXGroup;
+			children = (
+				187507BA179817CC00463B60 /* PLAppDelegate.h */,
+				187507BB179817CC00463B60 /* PLAppDelegate.m */,
+				187507B2179817CB00463B60 /* Supporting Files */,
+			);
+			path = PLVisualAttributeConstraints;
+			sourceTree = "<group>";
+		};
+		187507B2179817CB00463B60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				187507B3179817CB00463B60 /* PLVisualAttributeConstraints-Info.plist */,
+				187507B4179817CC00463B60 /* InfoPlist.strings */,
+				187507B7179817CC00463B60 /* main.m */,
+				187507B9179817CC00463B60 /* PLVisualAttributeConstraints-Prefix.pch */,
+				187507BD179817CC00463B60 /* Default.png */,
+				187507BF179817CC00463B60 /* Default@2x.png */,
+				187507C1179817CC00463B60 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		187507A7179817CB00463B60 /* PLVisualAttributeConstraints */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 187507C5179817CC00463B60 /* Build configuration list for PBXNativeTarget "PLVisualAttributeConstraints" */;
+			buildPhases = (
+				187507A4179817CB00463B60 /* Sources */,
+				187507A5179817CB00463B60 /* Frameworks */,
+				187507A6179817CB00463B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PLVisualAttributeConstraints;
+			productName = PLVisualAttributeConstraints;
+			productReference = 187507A8179817CB00463B60 /* PLVisualAttributeConstraints.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		187507A0179817CB00463B60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PL;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Polidea;
+			};
+			buildConfigurationList = 187507A3179817CB00463B60 /* Build configuration list for PBXProject "PLVisualAttributeConstraints" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1875079F179817CB00463B60;
+			productRefGroup = 187507A9179817CB00463B60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				187507A7179817CB00463B60 /* PLVisualAttributeConstraints */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		187507A6179817CB00463B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				187507B6179817CC00463B60 /* InfoPlist.strings in Resources */,
+				187507BE179817CC00463B60 /* Default.png in Resources */,
+				187507C0179817CC00463B60 /* Default@2x.png in Resources */,
+				187507C2179817CC00463B60 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		187507A4179817CB00463B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				187507B8179817CC00463B60 /* main.m in Sources */,
+				187507BC179817CC00463B60 /* PLAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		187507B4179817CC00463B60 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				187507B5179817CC00463B60 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		187507C3179817CC00463B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		187507C4179817CC00463B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		187507C6179817CC00463B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PLVisualAttributeConstraints/PLVisualAttributeConstraints-Prefix.pch";
+				INFOPLIST_FILE = "PLVisualAttributeConstraints/PLVisualAttributeConstraints-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		187507C7179817CC00463B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PLVisualAttributeConstraints/PLVisualAttributeConstraints-Prefix.pch";
+				INFOPLIST_FILE = "PLVisualAttributeConstraints/PLVisualAttributeConstraints-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		187507A3179817CB00463B60 /* Build configuration list for PBXProject "PLVisualAttributeConstraints" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				187507C3179817CC00463B60 /* Debug */,
+				187507C4179817CC00463B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		187507C5179817CC00463B60 /* Build configuration list for PBXNativeTarget "PLVisualAttributeConstraints" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				187507C6179817CC00463B60 /* Debug */,
+				187507C7179817CC00463B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 187507A0179817CB00463B60 /* Project object */;
+}
