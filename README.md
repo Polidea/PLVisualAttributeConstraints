@@ -67,11 +67,30 @@ A little bit hacky (read on to see why):
 ``control1.top == 100.5``
 
 ###Supported attributes are:
-`top`, `bottom`, `left`, `right`, `leading`, `trailing`, `width`, `height`, `centerx`, `centery`, `baseline` (**case insensitive**)
+`top`, `bottom`, `left`, `right`, `leading`, `trailing`, `width`, `height`, `centerx`, `centery`, `baseline` (case insensitive)
 Those attributes are mapped one-to-one with [those enums](http://developer.apple.com/library/mac/#documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html#//apple_ref/doc/c_ref/NSLayoutAttribute).
 
 ###Supported relations:
-``==``, ``>=``, ``<=``
+``==``, ``>=``, ``<=`` (mapped one-to-one with [those enums](http://developer.apple.com/library/mac/#documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html#//apple_ref/doc/c_ref/NSLayoutRelation))
+
+
+## Hacks
+
+As I've mentioned above, formats like ``control1.top >= 100`` (without an attribute on the right side, only constant) are supported.
+
+Whole lib is a thin wrapper above [this method](http://developer.apple.com/library/ios/#documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html#//apple_ref/occ/clm/NSLayoutConstraint/constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:) and as we read:
+
+> Constraints are of the form `view1.attr1 <relation> view2.attr2 * multiplier + constant`. 
+> If the constraint you wish to express does not have a second view and attribute, use `nil` and `NSLayoutAttributeNotAnAttribute`.
+
+Well... That works for constraints with `width` or `height` attribute on the left side (``control1.width == 100``). 
+In case of any other attribute (`top`, `left`...) it throws an exception upon constraint creation... And it somewhat makes sense. 
+
+Sometimes you want to create such a constraint anyway. In that case, you can create `control1.top == control1.top * 0 + 50` which should behave exactly the same as `control1.top == 50` and it does :)
+
+**TL;DR**
+
+Constraints like ``control1.top >= 100`` are automagically created as ``control1.top >= control1.top * 0 + 100``, which I consider a bit hacky, therefore elaborate on it here.
 
 
 ## Installation
@@ -81,6 +100,10 @@ Support for installation via [CocoaPods](https://github.com/CocoaPods/CocoaPods)
 
 ## Requirements
 * iOS 6.0+
+
+## Notes:
+* to open project, use `*.xcworkspace` and **not** `*.xcproject` file (as I use, love and recommend [CocoaPods](https://github.com/CocoaPods/CocoaPods))
+* tests are created using [Kiwi framework](https://github.com/allending/Kiwi)
 
 ## Author
 Kamil Jaworski (kamil.jaworski@gmail.com), [Polidea](http://www.polidea.com/)
