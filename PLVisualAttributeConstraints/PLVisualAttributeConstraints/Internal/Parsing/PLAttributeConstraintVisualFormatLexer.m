@@ -220,13 +220,16 @@
 
     unichar c = [_text characterAtIndex:_index];
 
-    if (isalpha(c)) {
+    BOOL isFirstCharOfIdentifier = (c == '_' || isalpha(c));
+
+    if (isFirstCharOfIdentifier) {
 
         NSUInteger beginOfIdentifierStringIndex = _index;
         NSUInteger endOfIdentifierStringIndex = _text.length - 1;
 
         for (NSUInteger i = _index + 1; i < _text.length; i++) {
-            if (!isalnum([_text characterAtIndex:i])) {
+            unichar currentChar = [_text characterAtIndex:i];
+            if (!isalnum(currentChar) && currentChar != '_') {
                 endOfIdentifierStringIndex = i - 1;
                 break;
             }

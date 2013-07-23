@@ -167,6 +167,32 @@ SPEC_BEGIN(PLAttributeConstraintVisualFormatLibSpec)
 
                 });
 
+                it(@"#5", ^{
+
+                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"_first.bottom <= _s_econd.top" views:
+                    @{
+                            @"_first": first,
+                            @"_s_econd": second
+                    }];
+
+                    NSLayoutConstraint *original = [NSLayoutConstraint constraintWithItem:first
+                                                                                attribute:NSLayoutAttributeBottom
+                                                                                relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                                   toItem:second
+                                                                                attribute:NSLayoutAttributeTop
+                                                                               multiplier:1
+                                                                                 constant:0];
+
+                    [[theValue(parsed) shouldNot] equal:theValue(nil)];
+                    [[theValue(original) shouldNot] equal:theValue(nil)];
+
+                    BOOL success = [PLAttributeConstraintVisualFormatLibSpecHelpers isConstraint:parsed
+                                                                               equalToConstraint:original];
+
+                    [[theValue(success) should] equal:theValue(YES)];
+
+                });
+
             });
 
         });

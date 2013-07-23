@@ -161,6 +161,31 @@ SPEC_BEGIN(PLAttributeConstraintVisualFormatLexerSpec)
 
                 });
 
+                it(@"should return correct identifiers atoms", ^{
+
+                    lexer = [[PLAttributeConstraintVisualFormatLexer alloc] initWithText:@"_ident1 ident1 abc abc_abc __"];
+
+                    BOOL success = [PLAttributeConstraintVisualFormatLexerSpecHelpers assertLexer:lexer
+                                                            returnsAtomsTypesAndStringDataInOrder:
+                                                                    @[
+                                                                            @[@(PLAtomTypeIdentifier), @"_ident1"],
+                                                                            @[@(PLAtomTypeWhitespace), @" "],
+                                                                            @[@(PLAtomTypeIdentifier), @"ident1"],
+                                                                            @[@(PLAtomTypeWhitespace), @" "],
+                                                                            @[@(PLAtomTypeIdentifier), @"abc"],
+                                                                            @[@(PLAtomTypeWhitespace), @" "],
+                                                                            @[@(PLAtomTypeIdentifier), @"abc_abc"],
+                                                                            @[@(PLAtomTypeWhitespace), @" "],
+                                                                            @[@(PLAtomTypeIdentifier), @"__"],
+                                                                            @[@(PLAtomTypeEndOfInput), [NSNull null]],
+                                                                    ]
+                    ];
+
+                    [[theValue(success) should] equal:theValue(YES)];
+
+                });
+
+
             });
 
         });
