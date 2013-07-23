@@ -10,15 +10,15 @@ PLVisualAttributeConstraints **does not** try to replace standard [VFL (Visual F
 
 In a nutshell, having two views...
 ```objective-c
-  UIView *firstView = ...
-  UIView *secondView = ...
+  UIView *firstViewObj = ...
+  UIView *secondViewObj = ...
 ```
 
 using this lib you can create layout constraint like...
 ```objective-c
   NSDictionary *views = @{
-          @"firstView" : firstView,
-          @"secondView" : secondView
+          @"firstView" : firstViewObj,
+          @"secondView" : secondViewObj
   };
 
   NSLayoutConstraint *constraint1 = 
@@ -29,10 +29,10 @@ using this lib you can create layout constraint like...
 instead of standard
 ```objective-c
   NSLayoutConstraint *constraint2 = 
-    [NSLayoutConstraint constraintWithItem:secondView
+    [NSLayoutConstraint constraintWithItem:secondViewObj
                                  attribute:NSLayoutAttributeLeft
                                  relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                    toItem:firstView
+                                    toItem:firstViewObj
                                  attribute:NSLayoutAttributeLeft
                                 multiplier:2
                                   constant:10];
@@ -73,6 +73,9 @@ Those attributes are mapped one-to-one with [those enums](http://developer.apple
 ###Supported relations:
 ``==``, ``>=``, ``<=`` (mapped one-to-one with [those enums](http://developer.apple.com/library/mac/#documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html#//apple_ref/doc/c_ref/NSLayoutRelation))
 
+## Demo
+
+To see the lib in action (and in comparision with [standard constraint-creating method](http://developer.apple.com/library/ios/#documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html#//apple_ref/occ/clm/NSLayoutConstraint/constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:)), checkout the project. Open it via `*.xcworkspace` and **not** `*.xcproject` file (why? [CocoaPods](https://github.com/CocoaPods/CocoaPods)). Yeap, I know that this example is somewhat artificial :) But it'll do. If you have better suggestions on how to prepare the demo, pull requests are welcome :)
 
 ## Hacks
 
