@@ -10,15 +10,15 @@ PLVisualAttributeConstraints **does not** try to replace standard [VFL (Visual F
 
 In a nutshell, having two views...
 ```objective-c
-  UIView *firstView = ...
-  UIView *secondView = ...
+  UIView *firstViewObj = ...
+  UIView *secondViewObj = ...
 ```
 
 using this lib you can create layout constraint like...
 ```objective-c
   NSDictionary *views = @{
-          @"firstView" : firstView,
-          @"secondView" : secondView
+          @"firstView" : firstViewObj,
+          @"secondView" : secondViewObj
   };
 
   NSLayoutConstraint *constraint1 = 
@@ -29,10 +29,10 @@ using this lib you can create layout constraint like...
 instead of standard
 ```objective-c
   NSLayoutConstraint *constraint2 = 
-    [NSLayoutConstraint constraintWithItem:secondView
+    [NSLayoutConstraint constraintWithItem:secondViewObj
                                  attribute:NSLayoutAttributeLeft
                                  relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                    toItem:firstView
+                                    toItem:firstViewObj
                                  attribute:NSLayoutAttributeLeft
                                 multiplier:2
                                   constant:10];
