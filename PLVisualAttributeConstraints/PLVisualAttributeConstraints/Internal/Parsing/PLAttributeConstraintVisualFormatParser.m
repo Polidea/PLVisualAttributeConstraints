@@ -113,6 +113,7 @@
         if (!constantParser.parsedWithSuccess) {
             return nil;
         }
+        constant = constantParser.constantValue;
 
     } else {
 

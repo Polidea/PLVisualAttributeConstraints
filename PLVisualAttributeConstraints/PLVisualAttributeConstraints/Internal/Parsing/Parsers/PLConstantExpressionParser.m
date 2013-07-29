@@ -27,6 +27,8 @@
 
     NSUInteger initialLexerState = _lexer.currentState;
 
+    CGFloat signMultiplier = 1.0f;
+
     // + | -
     PLAttributeConstraintVisualFormatAtom *signAtom = [_lexer next];
     if (signAtom.atomType != PLAtomTypePlus && signAtom.atomType != PLAtomTypeMinus) {
@@ -34,10 +36,12 @@
         if (reportErrorOnFailure) {
             [PLVisualFormatErrorLogger logExpectedAtomDescribedByString:@"Sign (+/-)" gotAtom:signAtom inText:_lexer.text onIndex:initialLexerState];
         }
-        return NO;
+        if (self.requireLeadingSignChar) {
+            return NO;
+        }
+    } else {
+        signMultiplier = (signAtom.atomType == PLAtomTypePlus) ? 1.0f : -1.0f;
     }
-
-    CGFloat signMultiplier = (signAtom.atomType == PLAtomTypePlus) ? 1.0f : -1.0f;
 
     [_lexer omitWhiteSpaces];
 
