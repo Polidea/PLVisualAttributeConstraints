@@ -95,13 +95,10 @@
 
     [self omitWhiteSpaces];
 
-    // Optional second control
-    PLControlWithAttributeParser *secondControl = [[PLControlWithAttributeParser alloc] initWithLexer:_lexer];
-    BOOL secondControlParsed = [secondControl parseSuppressingFailure];
+    PLControlWithAttributeParser *optionalSecondControlParser = [[PLControlWithAttributeParser alloc] initWithLexer:_lexer];
+    BOOL noLayoutAttributeOnRightSide = !([optionalSecondControlParser parseSuppressingFailure]);
 
     [self omitWhiteSpaces];
-
-    BOOL noLayoutAttributeOnRightSide = !secondControlParsed;
 
     PLConstantExpressionParser *constantParser = [PLConstantExpressionParser parserWithLexer:_lexer];
     PLMultiplierExpressionParser *multiplierParser = [PLMultiplierExpressionParser parserWithLexer:_lexer];
@@ -138,23 +135,29 @@
 
     [self omitWhiteSpaces];
 
-    // Ensure that it's end of string already
+    if (![self isEndOfFormatString]) {
+        return nil;
+    }
+
+    return [self buildConstraintWithFirstControlAttributeParser:firstControlParser
+                                                       relation:relationParser.parsedRelationType
+                               secondControlWithAttributeParser:optionalSecondControlParser
+                                                     multiplier:multiplier
+                                                       constant:constant
+                                                          views:views];
+
+}
+
+- (BOOL)isEndOfFormatString {
     PLAttributeConstraintVisualFormatAtom *atom = nil;
     NSUInteger initialLexerState = _lexer.currentState;
     atom = [_lexer next];
     if (atom.atomType != PLAtomTypeEndOfInput) {
         [PLVisualFormatErrorLogger logExpectedAtomDescribedByString:@"End of format string" gotAtom:atom inText:_lexer.text onIndex:initialLexerState];
         [_lexer setCurrentState:initialLexerState];
-        return nil;
+        return NO;
     }
-
-    return [self buildConstraintWithFirstControlAttributeParser:firstControlParser
-                                                       relation:relationParser.parsedRelationType
-                               secondControlWithAttributeParser:secondControl
-                                                     multiplier:multiplier
-                                                       constant:constant
-                                                          views:views];
-
+    return YES;
 }
 
 #pragma mark -

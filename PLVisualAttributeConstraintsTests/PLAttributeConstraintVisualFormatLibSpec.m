@@ -57,49 +57,49 @@ SPEC_BEGIN(PLAttributeConstraintVisualFormatLibSpec)
                 };
 
             });
-//
-//            context(@"should fail while parsing invalid formats samples:", ^{
-//                it(@"invalid #1", ^{
-//                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"someNonexistingControl.top == second.top" views:views];
-//                    [[parsed should] beNil];
-//                });
-//                it(@"invalid #2", ^{
-//                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.top = second.top" views:views];
-//                    [[parsed should] beNil];
-//                });
-//                it(@"invalid #3", ^{
-//                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.top < second.top" views:views];
-//                    [[parsed should] beNil];
-//                });
-//                it(@"invalid #4", ^{
-//                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.topleft <= second.top" views:views];
-//                    [[parsed should] beNil];
-//                });
-//            });
+
+            context(@"should fail while parsing invalid formats samples:", ^{
+                it(@"invalid #1", ^{
+                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"someNonexistingControl.top == second.top" views:views];
+                    [[parsed should] beNil];
+                });
+                it(@"invalid #2", ^{
+                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.top = second.top" views:views];
+                    [[parsed should] beNil];
+                });
+                it(@"invalid #3", ^{
+                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.top < second.top" views:views];
+                    [[parsed should] beNil];
+                });
+                it(@"invalid #4", ^{
+                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.topleft <= second.top" views:views];
+                    [[parsed should] beNil];
+                });
+            });
 
             context(@"should parse samples:", ^{
 
-//                it(@"#1", ^{
-//
-//                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.top == second.top" views:views];
-//
-//                    NSLayoutConstraint *original = [NSLayoutConstraint constraintWithItem:first
-//                                                                                attribute:NSLayoutAttributeTop
-//                                                                                relatedBy:NSLayoutRelationEqual
-//                                                                                   toItem:second
-//                                                                                attribute:NSLayoutAttributeTop
-//                                                                               multiplier:1
-//                                                                                 constant:0];
-//
-//                    [[theValue(parsed) shouldNot] equal:theValue(nil)];
-//                    [[theValue(original) shouldNot] equal:theValue(nil)];
-//
-//                    BOOL success = [PLAttributeConstraintVisualFormatLibSpecHelpers isConstraint:parsed
-//                                                                               equalToConstraint:original];
-//
-//                    [[theValue(success) should] equal:theValue(YES)];
-//
-//                });
+                it(@"#1", ^{
+
+                    NSLayoutConstraint *parsed = [NSLayoutConstraint attributeConstraintWithVisualFormat:@"first.top == second.top" views:views];
+
+                    NSLayoutConstraint *original = [NSLayoutConstraint constraintWithItem:first
+                                                                                attribute:NSLayoutAttributeTop
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:second
+                                                                                attribute:NSLayoutAttributeTop
+                                                                               multiplier:1
+                                                                                 constant:0];
+
+                    [[theValue(parsed) shouldNot] equal:theValue(nil)];
+                    [[theValue(original) shouldNot] equal:theValue(nil)];
+
+                    BOOL success = [PLAttributeConstraintVisualFormatLibSpecHelpers isConstraint:parsed
+                                                                               equalToConstraint:original];
+
+                    [[theValue(success) should] equal:theValue(YES)];
+
+                });
 
                 it(@"#2", ^{
 
