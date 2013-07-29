@@ -35,6 +35,11 @@
 #import "PLAttributeConstraintVisualFormatAtom.h"
 #import "PLConstraintLayoutAttributeMapper.h"
 #import "PLAttributeConstraintVisualFormatLexerProtocol.h"
+#import "PLControlWithAttributeParser.h"
+#import "PLRelationParser.h"
+#import "PLConstantExpressionParser.h"
+#import "PLMultiplierExpressionParser.h"
+#import "PLVisualFormatErrorLogger.h"
 
 #define PLAttributeConstraintFormatParserDebuggingLogsEnabled 0
 
@@ -69,64 +74,62 @@
     NSLog(@"PLAttributeConstraintVisualFormatParser: Creating constraint for format: %@", _lexer.text);
 #endif
 
-    NSArray *firstControlWithAttribute = nil;
-    NSArray *secondControlWithAttribute = nil;
-
-    NSLayoutRelation relation = NSLayoutRelationEqual;
-
     CGFloat multiplier = 1.0f;
     CGFloat constant = 0.0f;
 
     [self omitWhiteSpaces];
 
-    // First control
-    firstControlWithAttribute = [self parseControlAttributeReportErrorOnFailure:YES];
-    if (!firstControlWithAttribute) {
+    PLControlWithAttributeParser *firstControlParser = [[PLControlWithAttributeParser alloc] initWithLexer:_lexer];
+    [firstControlParser parseReportingFailure];
+    if(!firstControlParser.parsedWithSuccess){
         return nil;
     }
-
+    
     [self omitWhiteSpaces];
 
-    PLAttributeConstraintVisualFormatAtom *atom = nil;
-
-    // Relation
-    atom = [_lexer next];
-    PLAtomType atomType = atom.atomType;
-    if (atomType == PLAtomTypeRelationEqual || atomType == PLAtomTypeRelationLessOrEqual || atomType == PLAtomTypeRelationGreaterOrEqual) {
-        relation = [self relationFromAtom:atom];
-    } else {
-        [self logErrorExpectedRelationAtomAndGotAtom:atom];
+    PLRelationParser *relationParser = [PLRelationParser parserWithLexer:_lexer];
+    [relationParser parseReportingFailure];
+    if(!relationParser.parsedWithSuccess){
         return nil;
     }
 
     [self omitWhiteSpaces];
 
     // Optional second control
-    secondControlWithAttribute = [self parseControlAttributeReportErrorOnFailure:NO];
+    PLControlWithAttributeParser *secondControl = [[PLControlWithAttributeParser alloc] initWithLexer:_lexer];
+    BOOL secondControlParsed = [secondControl parseSuppressingFailure];
 
     [self omitWhiteSpaces];
 
-    BOOL noLayoutAttributeOnRightSide = !secondControlWithAttribute;
+    BOOL noLayoutAttributeOnRightSide = !secondControlParsed;
+
+    PLConstantExpressionParser *constantParser = [PLConstantExpressionParser parserWithLexer:_lexer];
+    PLMultiplierExpressionParser *multiplierParser = [PLMultiplierExpressionParser parserWithLexer:_lexer];
 
     if (noLayoutAttributeOnRightSide) {
-        // floating number
 
-        constant = [self parseFloatingPointNumberReportError:YES];
-        if (constant == CGFLOAT_MIN) {
+        constantParser.requireLeadingSignChar = NO;
+        [constantParser parseReportingFailure];
+        if (!constantParser.parsedWithSuccess) {
             return nil;
         }
 
     } else {
 
-        multiplier = [self parseMultiplierExpressionReportError:NO];
-        if (multiplier == CGFLOAT_MIN) {
+        [multiplierParser parseSuppressingFailure];
+        if (multiplierParser.parsedWithSuccess) {
+            multiplier = multiplierParser.multiplierValue;
+        } else {
             multiplier = 1.0f;
         }
 
         [self omitWhiteSpaces];
 
-        constant = [self parseConstantExpressionReportError:NO];
-        if (constant == CGFLOAT_MIN) {
+        constantParser.requireLeadingSignChar = YES;
+        [constantParser parseSuppressingFailure];
+        if (constantParser.parsedWithSuccess) {
+            constant = constantParser.constantValue;
+        } else {
             constant = 0.0f;
         }
 
@@ -135,213 +138,22 @@
     [self omitWhiteSpaces];
 
     // Ensure that it's end of string already
+    PLAttributeConstraintVisualFormatAtom *atom = nil;
+    NSUInteger initialLexerState = _lexer.currentState;
     atom = [_lexer next];
     if (atom.atomType != PLAtomTypeEndOfInput) {
-        [self logErrorExpectedAtomType:PLAtomTypeEndOfInput gotAtom:atom];
+        [PLVisualFormatErrorLogger logExpectedAtomDescribedByString:@"End of format string" gotAtom:atom inText:_lexer.text onIndex:initialLexerState];
+        [_lexer setCurrentState:initialLexerState];
         return nil;
     }
 
-    return [self buildConstraintWithFirstControlAttributeSegments:firstControlWithAttribute
-                                                         relation:relation
-                               secondControlWithAttributeSegments:secondControlWithAttribute
-                                                       multiplier:multiplier
-                                                         constant:constant views:views];
+    return [self buildConstraintWithFirstControlAttributeParser:firstControlParser
+                                                       relation:relationParser.parsedRelationType
+                               secondControlWithAttributeParser:secondControl
+                                                     multiplier:multiplier
+                                                       constant:constant
+                                                          views:views];
 
-}
-
-#pragma mark - parsing helpers
-
-// controlName.attrName
-- (NSArray *)parseControlAttributeReportErrorOnFailure:(BOOL)reportError {
-
-    PLAttributeConstraintVisualFormatAtom *atom = nil;
-
-    NSString *controlName = nil;
-    NSString *controlAttribute = nil;
-
-    NSUInteger initialLexerState = _lexer.currentState;
-
-    // control name
-    atom = [_lexer next];
-    if (atom.atomType == PLAtomTypeIdentifier) {
-        controlName = atom.stringData;
-    } else {
-        [_lexer setCurrentState:initialLexerState];
-        if (reportError) [self logErrorExpectedAtomType:PLAtomTypeIdentifier gotAtom:atom];
-        return nil;
-    }
-
-    // dot
-    atom = [_lexer next];
-    if (atom.atomType != PLAtomTypeDot) {
-        [_lexer setCurrentState:initialLexerState];
-        if (reportError) [self logErrorExpectedAtomType:PLAtomTypeDot gotAtom:atom];
-        return nil;
-    }
-
-    // control attribute
-    atom = [_lexer next];
-    if (atom.atomType == PLAtomTypeIdentifier) {
-        controlAttribute = atom.stringData;
-    } else {
-        [_lexer setCurrentState:initialLexerState];
-        [self logErrorExpectedAtomType:PLAtomTypeIdentifier gotAtom:atom];
-        return nil;
-    }
-
-    return @[controlName, controlAttribute];
-
-}
-
-// '*' <float number>
-- (CGFloat)parseMultiplierExpressionReportError:(BOOL)reportError {
-
-    PLAttributeConstraintVisualFormatAtom *atom = nil;
-
-    NSUInteger initialLexerState = _lexer.currentState;
-
-    atom = [_lexer next];
-    if (atom.atomType != PLAtomTypeAsterisk) {
-        [_lexer setCurrentState:initialLexerState];
-        if (reportError) [self logErrorExpectedAtomType:PLAtomTypeIdentifier gotAtom:atom];
-        return CGFLOAT_MIN;
-    }
-
-    [self omitWhiteSpaces];
-
-    CGFloat multiplier = [self parseFloatingPointNumberReportError:YES];
-    if (multiplier == CGFLOAT_MIN) {
-        [_lexer setCurrentState:initialLexerState];
-        return CGFLOAT_MIN;
-    }
-
-    return multiplier;
-
-}
-
-// ['+' | '-'] <float number>
-- (CGFloat)parseConstantExpressionReportError:(BOOL)reportError {
-
-    PLAttributeConstraintVisualFormatAtom *atom = nil;
-
-    NSUInteger initialLexerState = _lexer.currentState;
-
-    atom = [_lexer next];
-    if (atom.atomType != PLAtomTypePlus && atom.atomType != PLAtomTypeMinus) {
-        [_lexer setCurrentState:initialLexerState];
-        if (reportError) [self logErrorExpectedSignAtomTypeAndGotAtom:atom];
-        return CGFLOAT_MIN;
-    }
-
-    CGFloat sign = (atom.atomType == PLAtomTypePlus) ? 1.0f : -1.0f;
-
-    [self omitWhiteSpaces];
-
-    CGFloat constant = [self parseFloatingPointNumberReportError:YES];
-    if (constant == CGFLOAT_MIN) {
-        [_lexer setCurrentState:initialLexerState];
-        if (reportError) [self logErrorExpectedFloatNumberAndGotAtom:atom];
-        return CGFLOAT_MIN;
-    }
-
-    return constant * sign;
-
-}
-
-- (CGFloat)parseFloatingPointNumberReportError:(BOOL)reportError {
-
-    PLAttributeConstraintVisualFormatAtom *atom = nil;
-
-    NSUInteger initialLexerState = _lexer.currentState;
-
-    atom = [_lexer next];
-    if (atom.atomType != PLAtomTypeFloatingPointNumber) {
-        [_lexer setCurrentState:initialLexerState];
-        if (reportError) [self logErrorExpectedAtomType:PLAtomTypeFloatingPointNumber gotAtom:atom];
-        return CGFLOAT_MIN;
-    }
-
-    return [atom.stringData floatValue];
-
-}
-
-#pragma mark -
-
-- (NSLayoutRelation)relationFromAtom:(PLAttributeConstraintVisualFormatAtom *)atom {
-
-    NSAssert(atom.atomType == PLAtomTypeRelationEqual || atom.atomType == PLAtomTypeRelationLessOrEqual || atom.atomType == PLAtomTypeRelationGreaterOrEqual,
-    @"Relation atom expected. Received: %@", atom);
-
-    unichar firstCharOfRelation = [atom.stringData characterAtIndex:0];
-    switch (firstCharOfRelation) {
-        case '=':
-            return NSLayoutRelationEqual;
-        case '<':
-            return NSLayoutRelationLessThanOrEqual;
-        case '>':
-            return NSLayoutRelationGreaterThanOrEqual;
-        default:
-            @throw [NSException exceptionWithName:@"Invalid state" reason:nil userInfo:nil];
-
-    }
-
-}
-
-#pragma mark - error handling
-
-- (void)logErrorExpectedAtomType:(PLAtomType)expectedAtomType gotAtom:(PLAttributeConstraintVisualFormatAtom *)atom {
-    [self beginErrorLogging];
-#if PLAttributeConstraintFormatParserDebuggingLogsEnabled
-    NSLog(@"PLAttributeConstraintVisualFormatParser: Expected: %@ got: %@", @(expectedAtomType), atom);
-#endif
-    [self printText:_lexer.text pointingAtCharAtIndex:atom.startIndex];
-    [self endErrorLogging];
-}
-
-- (void)logErrorExpectedSignAtomTypeAndGotAtom:(PLAttributeConstraintVisualFormatAtom *)atom {
-    [self beginErrorLogging];
-#if PLAttributeConstraintFormatParserDebuggingLogsEnabled
-    NSLog(@"PLAttributeConstraintVisualFormatParser: Expected sign (+-). Got: %@", atom);
-#endif
-    [self printText:_lexer.text pointingAtCharAtIndex:atom.startIndex];
-    [self endErrorLogging];
-}
-
-- (void)logErrorExpectedFloatNumberAndGotAtom:(PLAttributeConstraintVisualFormatAtom *)atom {
-    [self beginErrorLogging];
-#if PLAttributeConstraintFormatParserDebuggingLogsEnabled
-    NSLog(@"PLAttributeConstraintVisualFormatParser: Expected number. Got: %@", atom);
-#endif
-    [self printText:_lexer.text pointingAtCharAtIndex:atom.startIndex];
-    [self endErrorLogging];
-}
-
-- (void)logErrorExpectedRelationAtomAndGotAtom:(PLAttributeConstraintVisualFormatAtom *)atom {
-    [self beginErrorLogging];
-#if PLAttributeConstraintFormatParserDebuggingLogsEnabled
-    NSLog(@"PLAttributeConstraintVisualFormatParser: Expected relation (<= | == | >=). Got: %@", atom);
-#endif
-    [self printText:_lexer.text pointingAtCharAtIndex:atom.startIndex];
-    [self endErrorLogging];
-}
-
-- (void)endErrorLogging {
-    NSLog(@"======================================================================");
-}
-
-- (void)beginErrorLogging {
-    NSLog(@"======================================================================");
-    NSLog(@"PLAttributeConstraintVisualFormatParser: Could not parse constraint format.");
-}
-
-- (void)printText:(NSString *)text pointingAtCharAtIndex:(NSUInteger)index {
-    NSLog(@"%@", text);
-    NSMutableString *arrow = [NSMutableString string];
-    for (NSUInteger i = 1; i < index; i++) {
-        [arrow appendString:(i % 2 == 0) ? @" " : @"-"];
-    }
-    [arrow appendString:@"^"];
-    NSLog(@"%@", arrow);
 }
 
 #pragma mark -
@@ -353,46 +165,49 @@
 #pragma mark - constraint building
 
 
-- (NSLayoutConstraint *)buildConstraintWithFirstControlAttributeSegments:(NSArray *)firstControlAttributeSegments
-                                                                relation:(NSLayoutRelation)relation
-                                      secondControlWithAttributeSegments:(NSArray *)secondControlAttributeSegments
-                                                              multiplier:(CGFloat)multiplier
-                                                                constant:(CGFloat)constant
-                                                                   views:(NSDictionary *)views {
+- (NSLayoutConstraint *)buildConstraintWithFirstControlAttributeParser:(PLControlWithAttributeParser *)firstControlParser
+                                                              relation:(NSLayoutRelation)relation
+                                      secondControlWithAttributeParser:(PLControlWithAttributeParser *)secondControlParser
+                                                            multiplier:(CGFloat)multiplier
+                                                              constant:(CGFloat)constant
+                                                                 views:(NSDictionary *)views {
 
-    UIView *firstControl = [views objectForKey:firstControlAttributeSegments[0]];
-    NSLayoutAttribute firstControlAttr = [PLConstraintLayoutAttributeMapper attributeFromString:firstControlAttributeSegments[1]];
+    NSAssert(firstControlParser.parsedWithSuccess, @"First control has not been parsed successfully.", nil);
 
-    if (firstControl == nil) {
-        NSLog(@"PLAttributeConstraintVisualFormatParser: invalid first control. %@ unknown.", firstControl);
+    UIView *firstControlObject = [views objectForKey:firstControlParser.controlName];
+    NSLayoutAttribute firstControlAttr = [PLConstraintLayoutAttributeMapper attributeFromString:firstControlParser.attributeName];
+
+    if (firstControlObject == nil) {
+        NSLog(@"PLAttributeConstraintVisualFormatParser: invalid first control. %@ unknown.", firstControlParser.controlName);
         return nil;
     }
 
     if (firstControlAttr == NSLayoutAttributeNotAnAttribute) {
-        NSLog(@"PLAttributeConstraintVisualFormatParser: invalid first control attribute. %@ unknown.", firstControlAttributeSegments[1]);
+        NSLog(@"PLAttributeConstraintVisualFormatParser: invalid first control attribute. %@ unknown.", firstControlParser.attributeName);
         return nil;
     }
 
     UIView *secondControl = nil;
     NSLayoutAttribute secondControlAttr = NSLayoutAttributeNotAnAttribute;
 
-    if (secondControlAttributeSegments) {
+    if (secondControlParser.parsedWithSuccess) {
 
-        secondControl = [views objectForKey:secondControlAttributeSegments[0]];
-        secondControlAttr = [PLConstraintLayoutAttributeMapper attributeFromString:secondControlAttributeSegments[1]];
+        secondControl = [views objectForKey:secondControlParser.controlName];
+        secondControlAttr = [PLConstraintLayoutAttributeMapper attributeFromString:secondControlParser.attributeName];
 
-        if (firstControl == nil) {
-            NSLog(@"PLAttributeConstraintVisualFormatParser: invalid second control. %@ unknown.", secondControlAttributeSegments[0]);
+        if (firstControlObject == nil) {
+            NSLog(@"PLAttributeConstraintVisualFormatParser: invalid second control. %@ unknown.", secondControlParser.controlName);
             return nil;
         }
 
         if (firstControlAttr == NSLayoutAttributeNotAnAttribute) {
-            NSLog(@"PLAttributeConstraintVisualFormatParser: invalid second control attribute. %@ unknown.", secondControlAttributeSegments[1]);
+            NSLog(@"PLAttributeConstraintVisualFormatParser: invalid second control attribute. %@ unknown.", secondControlParser.attributeName);
             return nil;
         }
 
     }
     else {
+
         if (firstControlAttr != NSLayoutAttributeWidth && firstControlAttr != NSLayoutAttributeHeight) {
 
             // HACK:
@@ -410,14 +225,14 @@
             //   And that works   ;)
             //
 
-            secondControl = firstControl;
+            secondControl = firstControlObject;
             secondControlAttr = firstControlAttr;
             multiplier = 0;
 
         }
     }
 
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:firstControl
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:firstControlObject
                                                                   attribute:firstControlAttr
                                                                   relatedBy:relation
                                                                      toItem:secondControl

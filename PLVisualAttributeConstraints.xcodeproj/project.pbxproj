@@ -24,18 +24,27 @@
 		18F8DEDE179D6702008E80EB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187507AF179817CB00463B60 /* CoreGraphics.framework */; };
 		611860F1739E56902F1A8EA1 /* PLDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186FD6FA4F0A1054BA4DC4 /* PLDemoView.m */; };
 		61186128ABC267F2A6C10003 /* PLAttributeConstraintVisualFormatParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186E2B5452EDFD5BD658B4 /* PLAttributeConstraintVisualFormatParser.m */; };
+		61186220CD3AF63DFEB64B33 /* PLRelationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186EB88B82FC223B5AC9B4 /* PLRelationParser.m */; };
+		61186377F7D5BDEB9E8DC4C8 /* PLAttributeConstraintVisualFormatLexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186DD46660F2F545B49448 /* PLAttributeConstraintVisualFormatLexer.m */; };
+		611863CB8E4235129C062B24 /* PLBaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186B774ED582992BC411AD /* PLBaseParser.m */; };
 		611863EF25E4E1AFA0293E6B /* PLAttributeConstraintVisualFormatLexerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6118614CDE22B4C756927FFB /* PLAttributeConstraintVisualFormatLexerSpec.m */; };
 		611864511F588104396599DB /* PLAttributeConstraintVisualFormatParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 611862783E0CF10DE06133C0 /* PLAttributeConstraintVisualFormatParserSpec.m */; };
 		61186492C1DC11ADDAAC449C /* PLConstraintLayoutAttributeMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 611868A1CDD645EA87D7683F /* PLConstraintLayoutAttributeMapper.m */; };
+		611864F8996D4A7A7A9766FC /* PLAttributeConstraintVisualFormatAtom.m in Sources */ = {isa = PBXBuildFile; fileRef = 611867AC69974A141C4C1EAA /* PLAttributeConstraintVisualFormatAtom.m */; };
 		611865C62EBC16D484C3277F /* guy.png in Resources */ = {isa = PBXBuildFile; fileRef = 61186BF296D494DA1769F06E /* guy.png */; };
 		6118662A2FB548A6BE60C7F9 /* PLAttributeConstraintVisualFormatLibSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6118691DA33897632C77FB3A /* PLAttributeConstraintVisualFormatLibSpec.m */; };
 		6118665960EF3D6E0B0E5CB2 /* PLDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6118607F0A996255199584AE /* PLDemoViewController.m */; };
 		611866B0710CB360AE037DBB /* PLAttributeConstraintVisualFormatLibSpecHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 611868AF4426567136A87BD8 /* PLAttributeConstraintVisualFormatLibSpecHelpers.m */; };
+		6118698115672C027AE96862 /* PLConstantExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 611867420EABCEB55BC48AD4 /* PLConstantExpressionParser.m */; };
 		611869F38490CC8EC57CB1FB /* NSLayoutConstraint+PLVisualAttributeConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 6118670AE8B3944480A8A542 /* NSLayoutConstraint+PLVisualAttributeConstraints.m */; };
 		61186AA928350DAF7C52B35C /* PLAttributeConstraintVisualFormatLexerSpecHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186469404B727B19CE9B9A /* PLAttributeConstraintVisualFormatLexerSpecHelpers.m */; };
-		61186D7906FB7C4712720270 /* PLAttributeConstraintVisualFormatLexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6118651854C307DE26451D2C /* PLAttributeConstraintVisualFormatLexer.m */; };
+		61186AF6A2C254ACE9CD87AE /* PLVisualFormatErrorLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 611864AB2DBF9EF5ABFB5E5F /* PLVisualFormatErrorLogger.m */; };
+		61186BA119C5369F95953C2E /* PLControlWithAttributeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186741CFDF36CF46121A49 /* PLControlWithAttributeParser.m */; };
+		61186C6DA85CB048E8185AF2 /* PLMultiplierExpressionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186D66B0A3EDCFF89A71A5 /* PLMultiplierExpressionParser.m */; };
+		61186E37955C6BD0AAEE8992 /* PLRelationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186EB88B82FC223B5AC9B4 /* PLRelationParser.m */; };
 		61186E70328BDB75B2DFCCD9 /* PLAttributeConstraintVisualFormatLexerStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 6118689472BBEED88CE4CDB9 /* PLAttributeConstraintVisualFormatLexerStub.m */; };
-		61186F2805ABD2778EEC6A30 /* PLAttributeConstraintVisualFormatAtom.m in Sources */ = {isa = PBXBuildFile; fileRef = 61186F17EF99C99E9AC3B308 /* PLAttributeConstraintVisualFormatAtom.m */; };
+		61186F77B15E0A31215CA1A2 /* PLMutableMetric.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61186DCF657E26B19907FC63 /* PLMutableMetric.mm */; };
+		61186FDEDA73DAD913967938 /* PLVisualFormatErrorLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 611864AB2DBF9EF5ABFB5E5F /* PLVisualFormatErrorLogger.m */; };
 		F319C197F98A4708A971ED22 /* libPods-PLVisualAttributeConstraintsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14691F7423784F9BAC177E3B /* libPods-PLVisualAttributeConstraintsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -71,29 +80,43 @@
 		187507BF179817CC00463B60 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		187507C1179817CC00463B60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6118607F0A996255199584AE /* PLDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLDemoViewController.m; sourceTree = "<group>"; };
+		61186096B308FF5E6642F8AE /* PLMutableMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLMutableMetric.h; sourceTree = "<group>"; };
+		611860FDA6629031DE9E20D9 /* PLRelationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLRelationParser.h; sourceTree = "<group>"; };
 		6118614CDE22B4C756927FFB /* PLAttributeConstraintVisualFormatLexerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLexerSpec.m; sourceTree = "<group>"; };
+		611861FE3AC9B4E85657CBE1 /* PLControlWithAttributeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLControlWithAttributeParser.h; sourceTree = "<group>"; };
 		6118620889A964A8C22C69DE /* PLAttributeConstraintVisualFormatLibSpecHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLibSpecHelpers.h; sourceTree = "<group>"; };
 		611862783E0CF10DE06133C0 /* PLAttributeConstraintVisualFormatParserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatParserSpec.m; sourceTree = "<group>"; };
 		6118628F76B3AE4BDEBD2C99 /* PLAttributeConstraintVisualFormatParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatParser.h; sourceTree = "<group>"; };
+		6118634742884966C69D9A46 /* PLAttributeConstraintVisualFormatAtom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatAtom.h; sourceTree = "<group>"; };
 		611863D0542D824FFEEA3EA8 /* PLAttributeConstraintVisualFormatLexerSpecHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLexerSpecHelpers.h; sourceTree = "<group>"; };
+		6118643733B2CA8243BAB3F0 /* PLBaseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBaseParser.h; sourceTree = "<group>"; };
+		61186438E251A4BFC13A39C3 /* PLMultiplierExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLMultiplierExpressionParser.h; sourceTree = "<group>"; };
+		6118645D065D54BB20D5AC6A /* PLAttributeConstraintVisualFormatLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLexer.h; sourceTree = "<group>"; };
 		61186469404B727B19CE9B9A /* PLAttributeConstraintVisualFormatLexerSpecHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLexerSpecHelpers.m; sourceTree = "<group>"; };
+		611864AB2DBF9EF5ABFB5E5F /* PLVisualFormatErrorLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLVisualFormatErrorLogger.m; sourceTree = "<group>"; };
 		611864B7090FBE4608D6397C /* PLDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLDemoViewController.h; sourceTree = "<group>"; };
-		6118651854C307DE26451D2C /* PLAttributeConstraintVisualFormatLexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLexer.m; sourceTree = "<group>"; };
 		6118670AE8B3944480A8A542 /* NSLayoutConstraint+PLVisualAttributeConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PLVisualAttributeConstraints.m"; sourceTree = "<group>"; };
-		611868320DDE6A6E2203622D /* PLAttributeConstraintVisualFormatAtom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatAtom.h; sourceTree = "<group>"; };
+		61186741CFDF36CF46121A49 /* PLControlWithAttributeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLControlWithAttributeParser.m; sourceTree = "<group>"; };
+		611867420EABCEB55BC48AD4 /* PLConstantExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLConstantExpressionParser.m; sourceTree = "<group>"; };
+		611867AC69974A141C4C1EAA /* PLAttributeConstraintVisualFormatAtom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatAtom.m; sourceTree = "<group>"; };
+		611867AE95F13D278EA1ABBF /* PLConstantExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLConstantExpressionParser.h; sourceTree = "<group>"; };
 		6118689472BBEED88CE4CDB9 /* PLAttributeConstraintVisualFormatLexerStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLexerStub.m; sourceTree = "<group>"; };
 		611868A1CDD645EA87D7683F /* PLConstraintLayoutAttributeMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLConstraintLayoutAttributeMapper.m; sourceTree = "<group>"; };
 		611868AF4426567136A87BD8 /* PLAttributeConstraintVisualFormatLibSpecHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLibSpecHelpers.m; sourceTree = "<group>"; };
 		6118691DA33897632C77FB3A /* PLAttributeConstraintVisualFormatLibSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLibSpec.m; sourceTree = "<group>"; };
+		611869A3B39307548AFE1221 /* PLAttributeConstraintVisualFormatLexerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLexerProtocol.h; sourceTree = "<group>"; };
 		611869D09A6EE4378BA20229 /* PLDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLDemoView.h; sourceTree = "<group>"; };
-		61186AF37AC35A5DD24A0D4C /* PLAttributeConstraintVisualFormatLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLexer.h; sourceTree = "<group>"; };
-		61186BBFD2A127049D359A3F /* PLAttributeConstraintVisualFormatLexerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLexerProtocol.h; sourceTree = "<group>"; };
+		61186B774ED582992BC411AD /* PLBaseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBaseParser.m; sourceTree = "<group>"; };
+		61186B9862AA91776BA7B7D8 /* PLVisualFormatErrorLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVisualFormatErrorLogger.h; sourceTree = "<group>"; };
 		61186BF296D494DA1769F06E /* guy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guy.png; sourceTree = "<group>"; };
 		61186CEF5A737DFAD0B7F4F1 /* PLConstraintLayoutAttributeMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLConstraintLayoutAttributeMapper.h; sourceTree = "<group>"; };
+		61186D66B0A3EDCFF89A71A5 /* PLMultiplierExpressionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLMultiplierExpressionParser.m; sourceTree = "<group>"; };
 		61186DAA9D8872CF189834A9 /* PLAttributeConstraintVisualFormatLexerStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLAttributeConstraintVisualFormatLexerStub.h; sourceTree = "<group>"; };
+		61186DCF657E26B19907FC63 /* PLMutableMetric.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PLMutableMetric.mm; sourceTree = "<group>"; };
+		61186DD46660F2F545B49448 /* PLAttributeConstraintVisualFormatLexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatLexer.m; sourceTree = "<group>"; };
 		61186E2B5452EDFD5BD658B4 /* PLAttributeConstraintVisualFormatParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatParser.m; sourceTree = "<group>"; };
+		61186EB88B82FC223B5AC9B4 /* PLRelationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLRelationParser.m; sourceTree = "<group>"; };
 		61186EE542DF90FEC6EB5A00 /* NSLayoutConstraint+PLVisualAttributeConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PLVisualAttributeConstraints.h"; sourceTree = "<group>"; };
-		61186F17EF99C99E9AC3B308 /* PLAttributeConstraintVisualFormatAtom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatAtom.m; sourceTree = "<group>"; };
 		61186FD6FA4F0A1054BA4DC4 /* PLDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLDemoView.m; sourceTree = "<group>"; };
 		D46546F56937402393AA7015 /* Pods-PLVisualAttributeConstraintsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLVisualAttributeConstraintsTests.xcconfig"; path = "Pods/Pods-PLVisualAttributeConstraintsTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -206,6 +229,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		61186042B5C13EA056DB3F31 /* Dynamic Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				61186DCF657E26B19907FC63 /* PLMutableMetric.mm */,
+				61186096B308FF5E6642F8AE /* PLMutableMetric.h */,
+			);
+			path = "Dynamic Metrics";
+			sourceTree = "<group>";
+		};
 		6118625739425C2FF39413C0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,13 +263,12 @@
 			children = (
 				61186CEF5A737DFAD0B7F4F1 /* PLConstraintLayoutAttributeMapper.h */,
 				611868A1CDD645EA87D7683F /* PLConstraintLayoutAttributeMapper.m */,
-				611868320DDE6A6E2203622D /* PLAttributeConstraintVisualFormatAtom.h */,
-				61186F17EF99C99E9AC3B308 /* PLAttributeConstraintVisualFormatAtom.m */,
-				61186AF37AC35A5DD24A0D4C /* PLAttributeConstraintVisualFormatLexer.h */,
-				6118651854C307DE26451D2C /* PLAttributeConstraintVisualFormatLexer.m */,
 				6118628F76B3AE4BDEBD2C99 /* PLAttributeConstraintVisualFormatParser.h */,
 				61186E2B5452EDFD5BD658B4 /* PLAttributeConstraintVisualFormatParser.m */,
-				61186BBFD2A127049D359A3F /* PLAttributeConstraintVisualFormatLexerProtocol.h */,
+				611864AB2DBF9EF5ABFB5E5F /* PLVisualFormatErrorLogger.m */,
+				61186B9862AA91776BA7B7D8 /* PLVisualFormatErrorLogger.h */,
+				61186AE7AA8A18D76D76E74F /* Lexer */,
+				61186A3C8239BCC7CEDAAF06 /* Parsers */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -252,6 +283,23 @@
 			path = PLVisualAttributeConstraints;
 			sourceTree = "<group>";
 		};
+		61186A3C8239BCC7CEDAAF06 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				611861FE3AC9B4E85657CBE1 /* PLControlWithAttributeParser.h */,
+				61186B774ED582992BC411AD /* PLBaseParser.m */,
+				611860FDA6629031DE9E20D9 /* PLRelationParser.h */,
+				61186741CFDF36CF46121A49 /* PLControlWithAttributeParser.m */,
+				6118643733B2CA8243BAB3F0 /* PLBaseParser.h */,
+				61186EB88B82FC223B5AC9B4 /* PLRelationParser.m */,
+				61186D66B0A3EDCFF89A71A5 /* PLMultiplierExpressionParser.m */,
+				61186438E251A4BFC13A39C3 /* PLMultiplierExpressionParser.h */,
+				611867420EABCEB55BC48AD4 /* PLConstantExpressionParser.m */,
+				611867AE95F13D278EA1ABBF /* PLConstantExpressionParser.h */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
 		61186AB6AAFBB408A9484CCE /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,10 +312,23 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		61186AE7AA8A18D76D76E74F /* Lexer */ = {
+			isa = PBXGroup;
+			children = (
+				61186DD46660F2F545B49448 /* PLAttributeConstraintVisualFormatLexer.m */,
+				611867AC69974A141C4C1EAA /* PLAttributeConstraintVisualFormatAtom.m */,
+				6118645D065D54BB20D5AC6A /* PLAttributeConstraintVisualFormatLexer.h */,
+				6118634742884966C69D9A46 /* PLAttributeConstraintVisualFormatAtom.h */,
+				611869A3B39307548AFE1221 /* PLAttributeConstraintVisualFormatLexerProtocol.h */,
+			);
+			path = Lexer;
+			sourceTree = "<group>";
+		};
 		61186EEE2A2F9B10A9943E72 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
 				611867E387FF1CF64FD95F90 /* Parsing */,
+				61186042B5C13EA056DB3F31 /* Dynamic Metrics */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -413,6 +474,8 @@
 				61186AA928350DAF7C52B35C /* PLAttributeConstraintVisualFormatLexerSpecHelpers.m in Sources */,
 				611863EF25E4E1AFA0293E6B /* PLAttributeConstraintVisualFormatLexerSpec.m in Sources */,
 				61186E70328BDB75B2DFCCD9 /* PLAttributeConstraintVisualFormatLexerStub.m in Sources */,
+				61186AF6A2C254ACE9CD87AE /* PLVisualFormatErrorLogger.m in Sources */,
+				61186220CD3AF63DFEB64B33 /* PLRelationParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,12 +486,19 @@
 				187507B8179817CC00463B60 /* main.m in Sources */,
 				187507BC179817CC00463B60 /* PLAppDelegate.m in Sources */,
 				61186492C1DC11ADDAAC449C /* PLConstraintLayoutAttributeMapper.m in Sources */,
-				61186F2805ABD2778EEC6A30 /* PLAttributeConstraintVisualFormatAtom.m in Sources */,
-				61186D7906FB7C4712720270 /* PLAttributeConstraintVisualFormatLexer.m in Sources */,
 				61186128ABC267F2A6C10003 /* PLAttributeConstraintVisualFormatParser.m in Sources */,
 				611869F38490CC8EC57CB1FB /* NSLayoutConstraint+PLVisualAttributeConstraints.m in Sources */,
 				6118665960EF3D6E0B0E5CB2 /* PLDemoViewController.m in Sources */,
 				611860F1739E56902F1A8EA1 /* PLDemoView.m in Sources */,
+				61186F77B15E0A31215CA1A2 /* PLMutableMetric.mm in Sources */,
+				61186FDEDA73DAD913967938 /* PLVisualFormatErrorLogger.m in Sources */,
+				61186377F7D5BDEB9E8DC4C8 /* PLAttributeConstraintVisualFormatLexer.m in Sources */,
+				611864F8996D4A7A7A9766FC /* PLAttributeConstraintVisualFormatAtom.m in Sources */,
+				611863CB8E4235129C062B24 /* PLBaseParser.m in Sources */,
+				61186BA119C5369F95953C2E /* PLControlWithAttributeParser.m in Sources */,
+				61186E37955C6BD0AAEE8992 /* PLRelationParser.m in Sources */,
+				61186C6DA85CB048E8185AF2 /* PLMultiplierExpressionParser.m in Sources */,
+				6118698115672C027AE96862 /* PLConstantExpressionParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
