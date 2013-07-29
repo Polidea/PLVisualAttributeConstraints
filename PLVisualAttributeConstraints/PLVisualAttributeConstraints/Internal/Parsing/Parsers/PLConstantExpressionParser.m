@@ -31,16 +31,19 @@
 
     // + | -
     PLAttributeConstraintVisualFormatAtom *signAtom = [_lexer next];
-    if (signAtom.atomType != PLAtomTypePlus && signAtom.atomType != PLAtomTypeMinus) {
+    if (signAtom.atomType == PLAtomTypeMinus || signAtom.atomType == PLAtomTypePlus) {
+        signMultiplier = (signAtom.atomType == PLAtomTypePlus) ? 1.0f : -1.0f;
+    } else {
+
         [_lexer setCurrentState:initialLexerState];
-        if (reportErrorOnFailure) {
-            [PLVisualFormatErrorLogger logExpectedAtomDescribedByString:@"Sign (+/-)" gotAtom:signAtom inText:_lexer.text onIndex:initialLexerState];
-        }
+
         if (self.requireLeadingSignChar) {
+            if (self.requireLeadingSignChar && reportErrorOnFailure) {
+                [PLVisualFormatErrorLogger logExpectedAtomDescribedByString:@"Sign (+/-)" gotAtom:signAtom inText:_lexer.text onIndex:initialLexerState];
+            }
             return NO;
         }
-    } else {
-        signMultiplier = (signAtom.atomType == PLAtomTypePlus) ? 1.0f : -1.0f;
+
     }
 
     [_lexer omitWhiteSpaces];
