@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D149B0FB-DF37-45B3-812C-97ECA0F82A2B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PLVisualAttributeConstraints</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>41FE8FBA44014E5A898AD421BFA5EC32CDFE0FDB</key>
+		<string>https://github.com/Polidea/PLVisualAttributeConstraints.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PLVisualAttributeConstraints.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>41FE8FBA44014E5A898AD421BFA5EC32CDFE0FDB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Polidea/PLVisualAttributeConstraints.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>41FE8FBA44014E5A898AD421BFA5EC32CDFE0FDB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>41FE8FBA44014E5A898AD421BFA5EC32CDFE0FDB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>old</string>
+		</dict>
+	</array>
+</dict>
+</plist>

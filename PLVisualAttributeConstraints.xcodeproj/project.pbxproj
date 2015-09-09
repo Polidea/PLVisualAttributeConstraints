@@ -95,7 +95,8 @@
 		61186EE542DF90FEC6EB5A00 /* NSLayoutConstraint+PLVisualAttributeConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PLVisualAttributeConstraints.h"; sourceTree = "<group>"; };
 		61186F17EF99C99E9AC3B308 /* PLAttributeConstraintVisualFormatAtom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLAttributeConstraintVisualFormatAtom.m; sourceTree = "<group>"; };
 		61186FD6FA4F0A1054BA4DC4 /* PLDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLDemoView.m; sourceTree = "<group>"; };
-		D46546F56937402393AA7015 /* Pods-PLVisualAttributeConstraintsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLVisualAttributeConstraintsTests.xcconfig"; path = "Pods/Pods-PLVisualAttributeConstraintsTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		74818FF93C3CC34935AC5366 /* Pods-PLVisualAttributeConstraintsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLVisualAttributeConstraintsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PLVisualAttributeConstraintsTests/Pods-PLVisualAttributeConstraintsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89FE5630CF41DBFFC7CFC393 /* Pods-PLVisualAttributeConstraintsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLVisualAttributeConstraintsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PLVisualAttributeConstraintsTests/Pods-PLVisualAttributeConstraintsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +156,7 @@
 				1819E60717981AEC00AF37B9 /* PLVisualAttributeConstraintsTests */,
 				187507AA179817CB00463B60 /* Frameworks */,
 				187507A9179817CB00463B60 /* Products */,
-				D46546F56937402393AA7015 /* Pods-PLVisualAttributeConstraintsTests.xcconfig */,
+				1A68978E112F51C75155356A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +205,15 @@
 				187507C1179817CC00463B60 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1A68978E112F51C75155356A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74818FF93C3CC34935AC5366 /* Pods-PLVisualAttributeConstraintsTests.debug.xcconfig */,
+				89FE5630CF41DBFFC7CFC393 /* Pods-PLVisualAttributeConstraintsTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		6118625739425C2FF39413C0 /* Helpers */ = {
@@ -293,7 +303,7 @@
 			name = PLVisualAttributeConstraintsTests;
 			productName = PLVisualAttributeConstraintsTests;
 			productReference = 1819E60217981AEC00AF37B9 /* PLVisualAttributeConstraintsTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		187507A7179817CB00463B60 /* PLVisualAttributeConstraints */ = {
 			isa = PBXNativeTarget;
@@ -323,7 +333,7 @@
 				ORGANIZATIONNAME = Polidea;
 				TargetAttributes = {
 					1819E60117981AEC00AF37B9 = {
-						TestTargetID = 187507A7179817CB00463B60 /* PLVisualAttributeConstraints */;
+						TestTargetID = 187507A7179817CB00463B60;
 					};
 				};
 			};
@@ -381,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-PLVisualAttributeConstraintsTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PLVisualAttributeConstraintsTests/Pods-PLVisualAttributeConstraintsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5ED0FAD185248CCBF86827F /* Check Pods Manifest.lock */ = {
@@ -464,7 +474,7 @@
 /* Begin XCBuildConfiguration section */
 		1819E61217981AED00AF37B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D46546F56937402393AA7015 /* Pods-PLVisualAttributeConstraintsTests.xcconfig */;
+			baseConfigurationReference = 74818FF93C3CC34935AC5366 /* Pods-PLVisualAttributeConstraintsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PLVisualAttributeConstraints.app/PLVisualAttributeConstraints";
 				CLANG_ENABLE_MODULES = YES;
@@ -495,7 +505,7 @@
 		};
 		1819E61317981AED00AF37B9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D46546F56937402393AA7015 /* Pods-PLVisualAttributeConstraintsTests.xcconfig */;
+			baseConfigurationReference = 89FE5630CF41DBFFC7CFC393 /* Pods-PLVisualAttributeConstraintsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PLVisualAttributeConstraints.app/PLVisualAttributeConstraints";
 				CLANG_ENABLE_MODULES = YES;
