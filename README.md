@@ -1,3 +1,9 @@
+---
+
+This library is deprecated in favor of [PLXVisualAttributeConstraints](https://github.com/Polidea/PLXVisualAttributeConstraints)
+
+---
+
 ## Description
 
 **PLVisualAttributeConstraints** is small lib that makes it easier to create layout constraints (see: [NSLayoutConstraint](http://developer.apple.com/library/ios/#documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html) class).
